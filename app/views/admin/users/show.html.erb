@@ -1,0 +1,37 @@
+<h1><%= @user.new_record? ? 'New' : 'Editing' %> User</h1>
+
+<%= form_for([:admin, @user]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name  %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br/>
+    <%= f.password_field :password, :onKeyUp => "updateStrength(this.value)"  %>
+    <div id="password-meter"><strong>Strength</strong><div id = "psContainer"><div id = "psStrength"></div></div></div>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.label :groups %><br/>
+    <%= f.text_field :groups %>
+  </p>
+
+  <p>
+    <%= f.submit @user.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...' %> or <%= link_to 'Cancel', admin_users_path %>
+  </p>
+<% end %>
+
+

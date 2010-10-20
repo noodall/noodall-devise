@@ -1,0 +1,39 @@
+<h1>Listing Users</h1>
+
+<ul class="choices">
+<li><%= link_to 'Create New User', new_admin_user_path %></li>
+</ul>
+
+<%= will_paginate @users %>
+
+<table>
+  <thead>
+    <tr>
+      <%= sortable_table_header :name => "Name",  :sort => "title" %>
+      <%= sortable_table_header :name => "Email",  :sort => "email" %>
+      <%= sortable_table_header :name => "Role",  :sort => "role" %>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+<% for user in @users -%>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.groups %></td>
+      <td><%= link_to 'Edit', [:admin, user], :class => 'edit', :title => 'Edit this user' %></td>
+      <td><%= link_to 'Delete', [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
+    </tr>
+<% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <%= sortable_table_header :name => "Name",  :sort => "title" %>
+      <%= sortable_table_header :name => "Email",  :sort => "email" %>
+      <%= sortable_table_header :name => "Role",  :sort => "role" %>
+      <th colspan="2">Actions</th>
+    </tr>
+  </tfoot>
+</table>
+
+<%= will_paginate @users %>
