@@ -11,8 +11,6 @@ gem 'cucumber-rails'
 gem 'launchy'    # So you can do Then show me the page
 gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.7.6'
-gem 'newbamboo-rvideo', '~> 0.9.6'
-gem 'open4', '~> 0.9.5'
 gem 'factory_girl', '~> 1.3.2'
 gem "faker", "~> 0.3.1"
 

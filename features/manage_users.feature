@@ -11,8 +11,8 @@ Feature: Manage users
 
   Scenario: Create a User
     Given I am on the users admin page
-    And I follow "Create New User"
-    When I fill in the following:
+    When I follow "Create New User"
+    And I fill in the following:
       | Name                  | Mr Spoon              |
       | Email                 | spoon@buttonmoon.com  |
       | Password              | s3cur3                |
@@ -21,12 +21,24 @@ Feature: Manage users
     Then the user should be able to sign in as "spoon@buttonmoon.com/s3cur3"
 
   Scenario: Edit User information
-    Given 20 users exist
+    Given a user exists with the attrubutes:
+      | name                  | Mr Spoon              |
+      | email                 | spoon@buttonmoon.com  |
+      | password              | s3cur3                |
+      | password_confirmation | s3cur3                |
     And I am on the users admin page
-    Then I should be able to edit a user's information
+    When I follow "Mr Spoon"
+    And I fill in "Email" with "spoon@hotmail.com"
+    And press "Update"
+    Then the user should be able to sign in as "spoon@hotmail.com/s3cur3"
+
 
   Scenario: Delete a User
-    Given 20 users exist
+    Given a user exists with the attrubutes:
+      | name                  | Mr Spoon              |
+      | email                 | spoon@buttonmoon.com  |
+      | password              | s3cur3                |
+      | password_confirmation | s3cur3                |
     And I am on the users admin page
-    Then I should be able to delete a user
-    Then that user should not be able to sign in
+    When I follow "Delete" within "tr:contains('Mr Spoon')"
+    Then the user should not be able to sign in as "spoon@buttonmoon.com/s3cur3"

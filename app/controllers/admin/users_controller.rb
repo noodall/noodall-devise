@@ -50,9 +50,13 @@ class Admin::UsersController < Noodall::Admin::BaseController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-    # Because mass assignment is protected
-    @user.role = params[:user].delete(:role)
-    
+
+    # Remove password params if blank so devise does not validate them
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
