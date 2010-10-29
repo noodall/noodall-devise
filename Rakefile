@@ -6,21 +6,10 @@ rescue LoadError
 end
 Bundler::GemHelper.install_tasks
 
-require 'rake'
-require 'rake/rdoctask'
-
 require 'rspec/core'
 require 'rspec/core/rake_task'
 
 Rspec::Core::RakeTask.new(:spec)
-
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Noodall-component-gallery'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
 
 require 'cucumber/rake/task'
 
