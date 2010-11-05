@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    noodall-devise (0.0.1)
+    noodall-devise (0.1.0)
       devise (~> 1.1.3)
       mm-devise (~> 1.1.6)
 
