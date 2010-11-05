@@ -6,7 +6,8 @@ Feature: Manage users
 
   Scenario: List Users
     Given 20 users exist
-    And I am on the users admin page
+    And I am in the cms
+    When I follow "Users" within "ul#topnav"
     Then I should see a list of users
 
   Scenario: Create a User

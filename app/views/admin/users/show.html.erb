@@ -4,33 +4,38 @@
   <%= f.error_messages %>
 
   <p>
+    <span class="tooltip" title="Enter the name of this user">&nbsp;</span>
     <%= f.label :name %><br/>
-    <%= f.text_field :name  %>
+    <span class="input-wrap"><%= f.text_field :name  %></span>
   </p>
 
   <p>
+    <span class="tooltip" title="Enter the email address the user will use to login">&nbsp;</span>
     <%= f.label :email %><br/>
-    <%= f.text_field :email %>
+    <span class="input-wrap"><%= f.text_field :email %></span>
   </p>
 
   <p>
+    <span class="tooltip" title="Enter the a password for the user">&nbsp;</span>
     <%= f.label :password %><br/>
-    <%= f.password_field :password, :onKeyUp => "updateStrength(this.value)"  %>
-    <div id="password-meter"><strong>Strength</strong><div id = "psContainer"><div id = "psStrength"></div></div></div>
+    <span class="input-wrap"><%= f.password_field :password, :onKeyUp => "updateStrength(this.value)"  %></span>
   </p>
 
   <p>
+    <span class="tooltip" title="Enter the password again to confirm it is correct">&nbsp;</span>
     <%= f.label :password_confirmation %><br/>
-    <%= f.password_field :password_confirmation %>
+    <span class="input-wrap"><%= f.password_field :password_confirmation %></span>
   </p>
 
   <p>
-    <%= f.label :groups %><br/>
-    <%= f.text_field :groups %>
+    <span class="tooltip" title="Enter the groups this user belongs to (comma seperated)">&nbsp;</span>
+    <%= f.label :group_list, "Groups" %><br/>
+    <span class="input-wrap"><%= f.text_field :group_list %></span>
   </p>
 
-  <p>
-    <%= f.submit @user.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...' %> or <%= link_to 'Cancel', admin_users_path %>
+  <p class="fixed-form">
+    <%= f.submit @user.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...', :class => 'update' %>
+    <%= link_to 'Cancel', admin_users_path, :class => 'cancel' %>
   </p>
 <% end %>
 

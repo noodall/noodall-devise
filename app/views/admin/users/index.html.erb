@@ -1,7 +1,7 @@
 <h1>Listing Users</h1>
 
 <ul class="choices">
-<li><%= link_to 'Create New User', new_admin_user_path %></li>
+<li><%= link_to 'Create New User', new_admin_user_path, :class => 'button' %></li>
 </ul>
 
 <a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
@@ -20,8 +20,8 @@
 <% for user in @users -%>
     <tr>
       <td><%= link_to user.name, [:admin, user], :class => 'edit', :title => 'Edit this user' %></td>
-      <td><%= user.email %></td>
-      <td><%= user.groups %></td>
+      <td><%= mail_to user.email %></td>
+      <td><%= user.group_list %></td>
       <td><%= link_to 'Delete', [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
     </tr>
 <% end %>

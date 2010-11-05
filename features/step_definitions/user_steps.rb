@@ -10,6 +10,10 @@ Then /^I should see a list of users$/ do
   page.should have_css('tbody tr', :count => 20)
 end
 
+Given /^I am in the cms$/ do
+  visit noodall_admin_nodes_path
+end
+
 # Database
 
 Given /^a user exists with the attrubutes:$/ do |fields|

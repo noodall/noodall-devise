@@ -8,7 +8,7 @@ PATH
 PATH
   remote: /Users/steve/Gems/noodall-ui
   specs:
-    noodall-ui (0.0.2)
+    noodall-ui (0.0.5)
       dynamic_form
       noodall-core
       thoughtbot-sortable_table (= 0.0.6)
@@ -124,7 +124,7 @@ GEM
       jnunemaker-validatable (~> 1.8.4)
       plucky (~> 0.3.5)
     nokogiri (1.4.3.1)
-    noodall-core (0.1.0)
+    noodall-core (0.1.1)
       canable (= 0.1.1)
       mongo_mapper (= 0.8.4)
       ramdiv-mongo_mapper_acts_as_tree (= 0.1.1)

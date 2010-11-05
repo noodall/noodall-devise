@@ -1,6 +1,8 @@
 class Admin::UsersController < Noodall::Admin::BaseController
   include SortableTable::App::Controllers::ApplicationController
+  include Canable::Enforcers
   sortable_attributes :name, :email, :role
+  before_filter :enforce_admin_permission, :except => :index
 
   # GET /users
   # GET /users.xml
@@ -28,12 +30,7 @@ class Admin::UsersController < Noodall::Admin::BaseController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user]) do |user|
-      # No need for email confirmation
-      user.email_confirmed = true
-      # Because mass assignment is protected
-      user.role = params[:user][:role]
-    end
+    @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
         flash[:notice] = 'User was successfully created.'
@@ -73,6 +70,7 @@ class Admin::UsersController < Noodall::Admin::BaseController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
+
     @user.destroy
     flash[:notice] = 'User was successfully deleted.'
 
@@ -80,6 +78,17 @@ class Admin::UsersController < Noodall::Admin::BaseController
       format.html { redirect_to(admin_users_url) }
       format.xml  { head :ok }
     end
+  end
+
+  # Uses tag cloud to render all groups
+  def groups
+    render :json => User.tag_cloud
+  end
+
+  private
+
+  def enforce_admin_permission
+    raise Canable::Transgression unless current_user.admin?
   end
 
 end
