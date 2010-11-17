@@ -3,7 +3,7 @@ source :rubygems
 gemspec
 
 gem "rails", "3.0.1"
-gem 'noodall-ui', :path => "~/Gems/noodall-ui"
+gem 'noodall-ui'
 gem "capybara", ">= 0.3.9"
 gem "rspec-rails", ">= 2.0.0.beta"
 gem 'database_cleaner'
