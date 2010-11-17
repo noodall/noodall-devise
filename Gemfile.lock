@@ -1,18 +1,9 @@
 PATH
   remote: .
   specs:
-    noodall-devise (0.1.0)
+    noodall-devise (0.1.1)
       devise (~> 1.1.3)
       mm-devise (~> 1.1.6)
-
-PATH
-  remote: /Users/steve/Gems/noodall-ui
-  specs:
-    noodall-ui (0.0.5)
-      dynamic_form
-      noodall-core
-      thoughtbot-sortable_table (= 0.0.6)
-      will_paginate (~> 3.0.pre2)
 
 GEM
   remote: http://rubygems.org/
@@ -129,6 +120,11 @@ GEM
       mongo_mapper (= 0.8.4)
       ramdiv-mongo_mapper_acts_as_tree (= 0.1.1)
       ruby-stemmer
+    noodall-ui (0.0.10)
+      dynamic_form
+      noodall-core
+      thoughtbot-sortable_table (= 0.0.6)
+      will_paginate (~> 3.0.pre2)
     plucky (0.3.6)
       mongo (~> 1.1)
     polyglot (0.3.1)
@@ -210,7 +206,7 @@ DEPENDENCIES
   launchy
   mm-devise (~> 1.1.6)
   noodall-devise!
-  noodall-ui!
+  noodall-ui
   rails (= 3.0.1)
   rmagick
   rspec-rails (>= 2.0.0.beta)
