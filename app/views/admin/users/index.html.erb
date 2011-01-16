@@ -4,7 +4,6 @@
 <li><%= link_to 'Create New User', new_admin_user_path, :class => 'button' %></li>
 </ul>
 
-<a class="tooltip" href="/cms_help.pdf">&nbsp;</a>
 <%= will_paginate(@users, :previous_label => 'Previous', :next_label => 'Next') %>
 <div id="content-table">
 <table class="content">
