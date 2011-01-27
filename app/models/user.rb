@@ -22,4 +22,15 @@ class User
     tags.include?('admin')
   end
 
+  # Make emails for login case insensitive
+  def self.find_for_authentication(conditions)
+    conditions[:email] = /^#{conditions[:email].strip}$/i
+    super(conditions)
+  end
+
+protected
+  before_validation :clean_email
+  def clean_email
+    self.email = self.email.to_s.downcase.strip
+  end
 end
