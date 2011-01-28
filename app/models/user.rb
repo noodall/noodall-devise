@@ -33,4 +33,9 @@ protected
   def clean_email
     self.email = self.email.to_s.downcase.strip
   end
+
+  def self.groups
+    (self.tag_cloud + ['admin']).uniq
+  end
+
 end
