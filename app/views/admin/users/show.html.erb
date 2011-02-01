@@ -1,6 +1,6 @@
 <h1><%= @user.new_record? ? 'New' : 'Editing' %> User</h1>
 
-<%= form_for([:admin, @user]) do |f| %>
+<%= form_for([:admin, @user], :html => { :multipart => true}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -13,6 +13,18 @@
     <span class="tooltip" title="Enter the email address the user will use to login">&nbsp;</span>
     <%= f.label :email %><br/>
     <span class="input-wrap"><%= f.text_field :email %></span>
+  </p>
+  
+  <p>
+    <span class="tooltip" title="Select an image to use as this user's icon">&nbsp;</span>
+    <%= f.label :avatar %><br/>
+    <span class="input-wrap"><%= f.file_field :avatar %></span>
+  </p>
+
+  <p>
+    <span class="tooltip" title="Enter some text about this user">&nbsp;</span>
+    <%= f.label :bio %><br/>
+    <span class="input-wrap"><%= f.text_area :bio %></span>
   </p>
 
   <p>
