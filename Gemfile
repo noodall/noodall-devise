@@ -13,6 +13,7 @@ gem 'rmagick', :require => 'RMagick'
 gem 'dragonfly', '~> 0.7.6'
 gem 'factory_girl', '~> 1.3.2'
 gem "faker", "~> 0.3.1"
+gem "bson_ext", "~> 1.2.0"
 
 
 if RUBY_VERSION < '1.9'

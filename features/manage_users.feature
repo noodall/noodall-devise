@@ -43,3 +43,15 @@ Feature: Manage users
     And I am on the users admin page
     When I follow "Delete" within "tr:contains('Mr Spoon')"
     Then the user should not be able to sign in as "spoon@buttonmoon.com/s3cur3"
+
+  Scenario: Groups List for autocomplete
+    Given the following users exists:
+       | name     | group list      |
+       | Mr Spoon | admin, editor   |
+       | Dave     | editor          |
+       | Eric     | editor, manager |
+    When I go to the groups json
+    Then I should see JSON:
+      """
+      ["admin","editor","manager"]
+      """

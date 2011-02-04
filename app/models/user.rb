@@ -62,7 +62,7 @@ protected
   end
 
   def self.groups
-    (self.tag_cloud + ['admin']).uniq
+    (self.tag_cloud.map(&:name) + ['admin']).uniq.sort
   end
 
   before_validation :set_permalink
