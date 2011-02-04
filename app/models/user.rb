@@ -30,6 +30,7 @@ class User
   key :avatar_mime_type, String
   #------------------------
 
+  cattr_accessor :editor_groups
 
   def full_name
     name || email
@@ -37,6 +38,11 @@ class User
 
   def admin?
     tags.include?('admin')
+  end
+
+  def editor?
+    return true if self.class.editor_groups.blank?
+    (self.class.editor_groups & tags).size > 0
   end
 
   # Make emails for login case insensitive

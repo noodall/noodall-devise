@@ -18,6 +18,10 @@ Capybara.default_selector = :css
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+Factory.definition_file_paths = [
+  File.expand_path("../factories",  __FILE__)
+]
+Factory.find_definitions
 
 Rspec.configure do |config|
   # Remove this line if you don't want Rspec's should and should_not
