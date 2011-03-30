@@ -48,8 +48,8 @@ class User
   # Make emails for login case insensitive
   def self.find_for_authentication(conditions)
     filter_auth_params(conditions)
-    conditions[:email] = /^#{conditions[:email].strip}$/i
-    find(:first, :conditions => conditions)
+    # Search using case sensitive stripped email
+    find(:first, :conditions => conditions.merge(:email => /^#{Regexp.escape(conditions[:email].strip)}$/i))
   end
 
   def web_image_extension
