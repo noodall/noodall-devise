@@ -51,7 +51,7 @@ class User
   def self.find_for_authentication(conditions)
     filter_auth_params(conditions)
     # Search using case sensitive stripped email
-    find(:first, :conditions => conditions.merge(:email => /^#{Regexp.escape(conditions[:email].strip)}$/i))
+    first(conditions.merge(:email => /^#{Regexp.escape(conditions[:email].strip)}$/i))
   end
 
   def web_image_extension
