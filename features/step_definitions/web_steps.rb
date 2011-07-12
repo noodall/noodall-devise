@@ -100,7 +100,7 @@ end
 Then /^(?:|I )should see JSON:$/ do |expected_json|
   require 'json'
   expected = JSON.pretty_generate(JSON.parse(expected_json))
-  actual   = JSON.pretty_generate(JSON.parse(page.body))
+  actual   = JSON.pretty_generate(JSON.parse(page.source))
   expected.should == actual
 end
 
