@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name        = "noodall-devise"
   s.version     = Noodall::Devise::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = []
+  s.authors     = ["Steve England"]
   s.email       = []
   s.homepage    = "http://rubygems.org/gems/noodall-components-gallery"
   s.summary     = "Noodall Devise: User sign in and managent with devise"
