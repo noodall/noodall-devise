@@ -5,7 +5,7 @@ require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
 
-Bundler.require
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 require "noodall-devise"
 
 module Dummy

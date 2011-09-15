@@ -1,10 +1,5 @@
 class User
   include MongoMapper::Document
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :lockable and :timeoutable
-  devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable
-
   include Canable::Cans
   plugin Noodall::Tagging
 
@@ -13,8 +8,15 @@ class User
   key :bio, String
   timestamps!
 
-  alias_attribute :groups, :tags
-  alias_attribute :group_list, :tag_list
+  alias_method :groups=, :tags=
+  alias_method :groups, :tags
+  alias_method :group_list=, :tag_list=
+  alias_method :group_list, :tag_list
+
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
 
 
   #-- Dragonfly -----------
@@ -49,7 +51,7 @@ class User
   def self.find_for_authentication(conditions)
     filter_auth_params(conditions)
     # Search using case sensitive stripped email
-    find(:first, :conditions => conditions.merge(:email => /^#{Regexp.escape(conditions[:email].strip)}$/i))
+    first(conditions.merge(:email => /^#{Regexp.escape(conditions[:email].strip)}$/i))
   end
 
   def web_image_extension

@@ -1,3 +1,5 @@
+<% content_for :header, javascript_include_tag( 'admin/nodes' ) %>
+
 <h1><%= @user.new_record? ? 'New' : 'Editing' %> User</h1>
 
 <%= form_for([:admin, @user], :html => { :multipart => true}) do |f| %>
@@ -42,7 +44,7 @@
   <p>
     <span class="tooltip" title="Add a user to a group, this will determine what tasks they can perform when managing content.">&nbsp;</span>
     <%= f.label :group_list, "Permission Groups" %><br/>
-    <span class="input-wrap"><%= f.text_field :group_list %></span>
+    <span class="input-wrap"><%= f.text_field :group_list, :class => "groups-completer" %></span>
   </p>
 
   <p class="fixed-form">
