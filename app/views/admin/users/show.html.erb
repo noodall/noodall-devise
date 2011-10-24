@@ -31,7 +31,7 @@
 
   <p>
     <span class="tooltip" title="Enter the a password for the user">&nbsp;</span>
-    <%= f.label :password %><br/>
+    <%= f.label :password, password_label %><br/>
     <span class="input-wrap"><%= f.password_field :password, :onKeyUp => "updateStrength(this.value)"  %></span>
   </p>
 
