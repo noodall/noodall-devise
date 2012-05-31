@@ -1,38 +1,43 @@
-<h1>Listing Users</h1>
+<div class="row-fluid">
+  <div class="span12">
+    <h1 class="pull-left">Listing Users</h1>
+    <div class="btn-group pull-right">
+      <%= link_to '<i class="icon-plus"></i> Create New User'.html_safe, new_admin_user_path, :class => 'btn btn-success' %>
+    </div>
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->
 
-<ul class="choices">
-<li><%= link_to 'Create New User', new_admin_user_path, :class => 'button' %></li>
-</ul>
-
-<%= will_paginate(@users, :previous_label => 'Previous', :next_label => 'Next') %>
-<div id="content-table">
-<table class="content">
-  <thead>
-    <tr>
-      <%= sortable_table_header :name => "Name",  :sort => "title" %>
-      <%= sortable_table_header :name => "Email",  :sort => "email" %>
-      <%= sortable_table_header :name => "Role",  :sort => "role" %>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-<% for user in @users -%>
-    <tr>
-      <td><%= link_to user.name, [:admin, user], :class => 'edit', :title => 'Edit this user' %></td>
-      <td><%= mail_to user.email %></td>
-      <td><%= user.group_list %></td>
-      <td><%= link_to 'Delete', [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
-    </tr>
-<% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <%= sortable_table_header :name => "Name",  :sort => "title" %>
-      <%= sortable_table_header :name => "Email",  :sort => "email" %>
-      <%= sortable_table_header :name => "Role",  :sort => "role" %>
-      <th>Delete</th>
-    </tr>
-  </tfoot>
-</table>
-
-<%= will_paginate(@users, :previous_label => 'Previous', :next_label => 'Next') %>
+<div class="row-fluid">
+  <div class="span12">
+    <%= will_paginate(@users, :previous_label => 'Previous', :next_label => 'Next') %>
+    <table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered" id="content-table">
+      <thead>
+        <tr>
+          <%= sortable_table_header :name => "Name",  :sort => "title" %>
+          <%= sortable_table_header :name => "Email",  :sort => "email" %>
+          <%= sortable_table_header :name => "Role",  :sort => "role" %>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% for user in @users -%>
+        <tr>
+          <td><%= link_to user.name, [:admin, user], :class => 'edit', :title => 'Edit this user' %></td>
+          <td><%= mail_to user.email %></td>
+          <td><%= user.group_list %></td>
+          <td><%= link_to 'Delete', [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
+        </tr>
+    <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <%= sortable_table_header :name => "Name",  :sort => "title" %>
+          <%= sortable_table_header :name => "Email",  :sort => "email" %>
+          <%= sortable_table_header :name => "Role",  :sort => "role" %>
+          <th>Delete</th>
+        </tr>
+      </tfoot>
+    </table>
+    <%= will_paginate(@users, :previous_label => 'Previous', :next_label => 'Next') %>
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->

@@ -1,56 +1,73 @@
 <% content_for :header, javascript_include_tag( 'admin/nodes' ) %>
 
-<h1><%= @user.new_record? ? 'New' : 'Editing' %> User</h1>
 
-<%= form_for([:admin, @user], :html => { :multipart => true}) do |f| %>
-  <%= f.error_messages %>
+<div class="row-fluid">
+  <div class="span12">
+    <h1><%= @user.new_record? ? 'New' : 'Editing' %> User</h1>
+    
+  </div> <!-- span12 -->
+</div> <!-- row-fluid -->
 
-  <p>
-    <span class="tooltip" title="Enter the name of this user">&nbsp;</span>
-    <%= f.label :name %><br/>
-    <span class="input-wrap"><%= f.text_field :name  %></span>
-  </p>
-
-  <p>
-    <span class="tooltip" title="Enter the email address the user will use to login">&nbsp;</span>
-    <%= f.label :email %><br/>
-    <span class="input-wrap"><%= f.text_field :email %></span>
-  </p>
-  
-  <p>
-    <span class="tooltip" title="Select an image to use as this user's icon">&nbsp;</span>
-    <%= f.label :avatar %><br/>
-    <span class="input-wrap"><%= f.file_field :avatar %></span>
-  </p>
-
-  <p>
-    <span class="tooltip" title="Enter some text about this user">&nbsp;</span>
-    <%= f.label :bio %><br/>
-    <span class="input-wrap"><%= f.text_area :bio %></span>
-  </p>
-
-  <p>
-    <span class="tooltip" title="Enter the a password for the user">&nbsp;</span>
-    <%= f.label :password, password_label %><br/>
-    <span class="input-wrap"><%= f.password_field :password, :onKeyUp => "updateStrength(this.value)"  %></span>
-  </p>
-
-  <p>
-    <span class="tooltip" title="Enter the password again to confirm it is correct">&nbsp;</span>
-    <%= f.label :password_confirmation %><br/>
-    <span class="input-wrap"><%= f.password_field :password_confirmation %></span>
-  </p>
-
-  <p>
-    <span class="tooltip" title="Add a user to a group, this will determine what tasks they can perform when managing content.">&nbsp;</span>
-    <%= f.label :group_list, "Permission Groups" %><br/>
-    <span class="input-wrap"><%= f.text_field :group_list, :class => "groups-completer" %></span>
-  </p>
-
-  <p class="fixed-form">
-    <%= f.submit @user.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...', :class => 'update' %>
-    <%= link_to 'Cancel', admin_users_path, :class => 'cancel' %>
-  </p>
-<% end %>
-
-
+ <div class="row-fluid">
+   <div class="span8">
+     
+     <%= form_for([:admin, @user], :html => { :multipart => true, :class => "form-horizontal"}) do |f| %>
+       <%= f.error_messages %>
+     
+     <div class="control-group">
+        <%= f.label :name, :class => "control-label" %>
+        <i class="icon-info-sign pull-right icon-large help" title="Name" data-content="Enter the name of this user"></i>
+        <div class="controls"><%= f.text_field :name, :class => "span6" %></div>
+      </div>
+      
+      <div class="control-group">
+         <%= f.label :email, :class => "control-label" %>
+         <i class="icon-info-sign pull-right icon-large help" title="Email" data-content="Enter the email address the user will use to login"></i>
+         <div class="controls"><%= f.text_field :email, :class => "span6" %></div>
+       </div>
+       
+       <div class="control-group">
+          <%= f.label :avatar, :class => "control-label" %>
+          <i class="icon-info-sign pull-right icon-large help" title="Avatar" data-content="Select an image to use as this user's icon"></i>
+          <div class="controls"><%= f.file_field :avatar, :class => "span6" %></div>
+        </div>
+        
+        <div class="control-group">
+          <%= f.label :bio, :class => "control-label" %>
+          <i class="icon-info-sign pull-right icon-large help" title="Bio" data-content="Enter some text about this user"></i>
+          <div class="controls"><%= f.text_area :bio, :class => "span6" %></div>
+        </div>
+        
+        <div class="control-group">
+          <%= f.label :password, "Password", :class => "control-label" %>
+          <i class="icon-info-sign pull-right icon-large help" title="Avatar" data-content="Enter the a password for the user"></i>
+          <div class="controls">
+            <%= f.password_field :password, :onKeyUp => "updateStrength(this.value)", :class => "span6" %>
+            <p class="help-block"><%= password_label %></p>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <%= f.label :password_confirmation, :class => "control-label" %>
+          <i class="icon-info-sign pull-right icon-large help" title="Confirm Password" data-content="Enter the password again to confirm it is correct"></i>
+          <div class="controls"><%= f.password_field :password_confirmation, :class => "span6" %></div>
+        </div>
+        
+        
+        <div class="control-group">
+           <%= f.label :group_list, "Permission Groups", :class => "control-label" %>
+           <i class="icon-info-sign pull-right icon-large help" title="User Groups" data-content="Add a user to a group, this will determine what tasks they can perform when managing content."></i>
+           <div class="controls"><%= f.text_field :group_list, :class => "groups-completer span6" %></div>
+         </div>
+        
+        
+      <div class="form-actions">
+        <%= f.submit @user.new_record? ? 'Create' : 'Update', :disable_with => 'Submitting...', :class => 'update btn btn-large btn-success' %>
+        <%= link_to 'Cancel', admin_users_path, :class => 'cancel btn btn-large btn-danger' %>
+      </div>
+      
+      <% end %>
+      
+      
+   </div> <!-- span8 -->
+ </div> <!-- row-fluid -->
