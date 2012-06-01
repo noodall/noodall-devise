@@ -25,7 +25,7 @@
           <td><%= link_to user.name, [:admin, user], :class => 'edit', :title => 'Edit this user' %></td>
           <td><%= mail_to user.email %></td>
           <td><%= user.group_list %></td>
-          <td><%= link_to 'Delete', [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
+          <td class="delete"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
         </tr>
     <% end %>
       </tbody>
