@@ -1,3 +1,4 @@
-= Noodall-component-gallery
+# Noodall Devise
 
-This project rocks and uses MIT-LICENSE.
+User sign in and management for Noodall using Devise.
+
