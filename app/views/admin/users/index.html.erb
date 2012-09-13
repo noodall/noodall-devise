@@ -10,7 +10,7 @@
 <div class="row-fluid">
   <div class="span12">
     <%= will_paginate(@users, :previous_label => 'Previous', :next_label => 'Next') %>
-    <table border="0" cellspacing="0" cellpadding="0" class="table table-striped table-bordered" id="content-table">
+    <table border="0" cellspacing="0" cellpadding="0" class="table table-hover table-bordered" id="content-table">
       <thead>
         <tr>
           <%= sortable_table_header :name => "Name",  :sort => "title" %>
@@ -25,7 +25,7 @@
           <td><%= link_to user.name, [:admin, user], :class => 'edit', :title => 'Edit this user' %></td>
           <td><%= mail_to user.email %></td>
           <td><%= user.group_list %></td>
-          <td class="delete"><%= link_to '<i class="icon-remove-sign"></i>'.html_safe, [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
+          <td class="delete"><%= link_to '<i class="icon-remove"></i>'.html_safe, [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => 'delete', :title => 'Delete this user' %></td>
         </tr>
     <% end %>
       </tbody>
