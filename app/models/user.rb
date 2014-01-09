@@ -5,7 +5,7 @@ class User
 
   key :name, String
   key :email, String
-  key :permalink, String, :required => true, :index => true
+  key :permalink, String, :required => true
   key :bio, String
   key :remember_created_at, DateTime
   timestamps!
