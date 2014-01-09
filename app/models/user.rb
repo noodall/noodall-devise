@@ -4,8 +4,10 @@ class User
   plugin Noodall::Tagging
 
   key :name, String
+  key :email, String
   key :permalink, String, :required => true, :index => true
   key :bio, String
+  key :remember_created_at, DateTime
   timestamps!
 
   alias_method :groups=, :tags=
@@ -45,13 +47,6 @@ class User
   def editor?
     return true if self.class.editor_groups.blank?
     (self.class.editor_groups & tags).size > 0
-  end
-
-  # Make emails for login case insensitive
-  def self.find_for_authentication(conditions)
-    filter_auth_params(conditions)
-    # Search using case sensitive stripped email
-    first(conditions.merge(:email => /^#{Regexp.escape(conditions[:email].strip)}$/i))
   end
 
   def web_image_extension
